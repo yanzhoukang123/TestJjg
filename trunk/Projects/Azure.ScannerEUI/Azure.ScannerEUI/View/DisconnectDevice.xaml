@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Azure.ScannerEUI.View.DisconnectDevice"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Azure.ScannerEUI.View"
+             mc:Ignorable="d" Height="53.964" Width="185.245">
+    <Grid Margin="5,0,3,5">
+        <Button  x:Name="_OtherSettingsButton"
+            Style="{DynamicResource BlueButton}"
+                     Content="Replace Optical Module"
+            Width="175"
+            Height="30"
+            FontSize="14"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Command="{Binding Path=DisconnectDeviceCommand}" Visibility="{Binding VesionVisFlag}" Margin="1,10,1,9">
+
+        </Button>
+    </Grid>
+</UserControl>

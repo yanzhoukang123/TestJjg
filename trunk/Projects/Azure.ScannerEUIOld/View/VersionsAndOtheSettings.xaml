@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="Azure.ScannerEUI.View.VersionsAndOtheSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:my="clr-namespace:System;assembly=mscorlib"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d"  DataContext="{Binding Path=ScannerVM}" Width="275.712" Height="126">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Azure.ScannerEUI;component/Resources/AllResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="MyLabelHeaderStyle" TargetType="{x:Type Label}">
+                <Setter Property="Foreground" Value="DarkBlue" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid HorizontalAlignment="Left" Width="271" Margin="-1,3,0,-3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="38*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="126*"/>
+            <ColumnDefinition Width="145*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Label Content="HW version:" Style="{StaticResource MyLabelHeaderStyle}" VerticalAlignment="Center"   FontSize="16"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox   FontSize="14" FontWeight="SemiBold" Height="30" Text="{Binding Path=HWversion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, TargetNullValue={x:Static my:String.Empty}}" Width="130" VerticalContentAlignment="Center" IsReadOnly="True" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Label Content="FW version:" Style="{StaticResource MyLabelHeaderStyle}" VerticalAlignment="Center"   FontSize="16" Margin="14,0" Height="30"/>
+        </StackPanel>
+        <Grid Grid.Row="2" Grid.Column="0" Visibility="{Binding VesionVisFlag}">
+            <Label Content="CH1:" Style="{StaticResource MyLabelHeaderStyle}" Width="47" Margin="15,8,64,8" />
+            <TextBox x:Name="CH1"
+                        Height="29"
+                        FontSize="14"
+                        FontWeight="SemiBold"
+                        VerticalContentAlignment="Center"
+                        BorderBrush="{x:Null}" BorderThickness="0"
+                        Text="{Binding AmbientTemperatureCH1, Mode=TwoWay, TargetNullValue={x:Static sys:String.Empty}}" Margin="64,9,15,7"/>
+        </Grid>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox   FontSize="14" FontWeight="SemiBold" Height="30" Text="{Binding Path=FPGAVersion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, TargetNullValue={x:Static my:String.Empty}}" Width="130" VerticalContentAlignment="Center" IsReadOnly="True" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <Button  x:Name="_OtherSettingsButton"
+            Style="{DynamicResource BlueButton}"
+                     Content="Other Settings"
+            Width="137"
+            Height="41"
+            FontSize="14"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="5,1,3,1"
+            Visibility="Hidden"      
+            
+            Command="{Binding Path=SettingsCommand}">
+
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
+
